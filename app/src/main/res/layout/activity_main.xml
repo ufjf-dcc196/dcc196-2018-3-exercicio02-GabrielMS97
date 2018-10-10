@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnRemover"
+        android:id="@+id/btn_Remover"
         android:layout_width="135dp"
         android:layout_height="68dp"
         android:layout_marginBottom="8dp"
@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.206" />
 
     <EditText
-        android:id="@+id/txtEp"
+        android:id="@+id/txt_Ep"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
@@ -47,7 +47,7 @@
     <EditText
         android:id="@+id/txtSerie"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -65,7 +65,7 @@
         app:layout_constraintVertical_bias="0.017" />
 
     <EditText
-        android:id="@+id/txtTemp"
+        android:id="@+id/txt_Temp"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.138" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btn_Add"
         android:layout_width="135dp"
         android:layout_height="68dp"
         android:layout_marginBottom="8dp"
@@ -103,6 +103,7 @@
         app:layout_constraintVertical_bias="0.018" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_lista"
         android:layout_width="match_parent"
         android:layout_height="316dp"
         android:layout_marginBottom="8dp"
