@@ -11,6 +11,6 @@ public final class LembreteContract {
         public final static String CREATE_LEMBRETE = "CREATE TABLE " + Lembrete.TABLE_NAME + " ("
                 + Lembrete._ID + " INTEGER, " + Lembrete.COLUMN_NAME_SERIE + " TEXT, " + Lembrete.COLUMN_NAME_TEMPORADA
                 + " INTEGER, " + Lembrete.COLUMN_NAME_EPISODIO + " INTEGER " + ")";
-        public final static String DROP_Lembrete = "DROP TABLE IF EXISTS" + Lembrete.TABLE_NAME;
+        public final static String DROP_LEMBRETE = "DROP TABLE IF EXISTS" + Lembrete.TABLE_NAME;
     }
 }
