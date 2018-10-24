@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import br.ufjf.dcc196.exerciciopersistencia.R;
@@ -15,6 +16,16 @@ import br.ufjf.dcc196.exerciciopersistencia.R;
 class LembreteAdapter extends RecyclerView.Adapter<LembreteAdapter.ViewHolder>{
 
     private Cursor cursor;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener{
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnClickListener(OnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
 
     public LembreteAdapter(Cursor c){
         cursor = c;
@@ -36,13 +47,10 @@ class LembreteAdapter extends RecyclerView.Adapter<LembreteAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LembreteAdapter.ViewHolder holder, int position) {
         int idxSerie = cursor.getColumnIndexOrThrow(LembreteContract.Lembrete.COLUMN_NAME_SERIE);
         int idxTemporada = cursor.getColumnIndexOrThrow(LembreteContract.Lembrete.COLUMN_NAME_TEMPORADA);
         int idxEpisodio = cursor.getColumnIndexOrThrow(LembreteContract.Lembrete.COLUMN_NAME_EPISODIO);
-        String titulo = cursor.getString(idxSerie);
-        String autor = cursor.getString(idxTemporada);
-        Integer ano = cursor.getInt(idxEpisodio);
         cursor.moveToPosition(position);
         holder.txtTempLembrete.setText(cursor.getString(idxTemporada));
         holder.txtSerieLembrete.setText(cursor.getString(idxSerie));
@@ -60,11 +68,22 @@ class LembreteAdapter extends RecyclerView.Adapter<LembreteAdapter.ViewHolder>{
         public TextView txtTempLembrete;
         public TextView txtEpLembrete;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             txtEpLembrete = itemView.findViewById(R.id.txt_lembreteEp);
             txtSerieLembrete = itemView.findViewById(R.id.txt_lembreteSerie);
             txtTempLembrete = itemView.findViewById(R.id.txt_lembreteTemp);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(itemView, position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
